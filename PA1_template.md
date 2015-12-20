@@ -16,9 +16,11 @@ clean.data<-rep_data[!is.na(rep_data$steps),]
 agg.data<-tapply(clean.data[,1],clean.data[,2],sum)
 agg.data<-agg.data[!is.na(agg.data)]
 head(agg.data)
+hist(agg.data,breaks=20,ylab="Number of steps")
 mean(agg.data)
 median(agg.data)
 ```
+Figure 1 gives the histogram of the number of steps.
 We see that the mean is 10766.19 and the median is 10765 steps.
 
 Another option would have been to use the by function, but this doesn't give an array.
@@ -36,7 +38,7 @@ plot(agg.data2,type="l",main="Average activity per day",xlab="interval",ylab="Av
 match(max(agg.data2),agg.data2)
 max(agg.data2)
 ```
-As can be seen above, the maximum value is found for interval 104, the value is 206.1698. Figure 1 gives the time series of the average activity per day.
+As can be seen above, the maximum value is found for interval 104, the value is 206.1698. Figure 2 gives the time series of the average activity per day.
 
 ### Missing values
 
@@ -56,7 +58,7 @@ mean(agg.data.supplemented)
 median(agg.data.supplemented)
 mean(agg.data.supplemented)-mean(agg.data)
 ```
-We see that the mean and median are equal to 10766.19 steps. The difference between the supplemented and mean of the incomplete data is zero. Figure 2 gives a histogram of the supplemented data.
+We see that the mean and median are equal to 10766.19 steps. The difference between the supplemented and mean of the incomplete data is zero. Figure 3 gives a histogram of the supplemented data.
 
 Filling in the missing values doesn't change the mean number of steps of the entire dataset as can be seen above.
 
@@ -83,4 +85,4 @@ plot(xweek,agg.data.week,type="l",main="Activity week",xlab="interval",ylab="ste
 plot(xweekend,agg.data.weekend,type="l",main="Activity weekends",xlab="interval",ylab="steps",col='blue')
 ```
 
-Figure 3 gives the time series of the weekly and weekend data.
+Figure 4 gives the time series of the weekly and weekend data.
